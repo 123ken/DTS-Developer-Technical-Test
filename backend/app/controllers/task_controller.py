@@ -47,7 +47,7 @@ class TaskController:
 
 
     def create_task(self, task: TaskCreate, db: Session = Depends(get_db)):
-        db_task = Task(**task.model_dump()) # Use model_dump for Pydantic v2+
+        db_task = Task(**task.model_dump())
         db.add(db_task)
         db.commit()
         db.refresh(db_task)
