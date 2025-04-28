@@ -1,33 +1,85 @@
-# FastAPI Template
+# FastAPI Task App
 
-This sample repo contains the recommended structure for a Python FastAPI project. In this sample, we use `fastapi` to build a web application and the `pytest` to run tests.
+This is a simple FastAPI application for managing tasks. It allows users to create, retrieve, update, and delete tasks with properties such as title, optional description, status, and due date/time.
 
-For a more in-depth tutorial, see our [Fast API tutorial](https://code.visualstudio.com/docs/python/tutorial-fastapi).
+## Project Structure
 
-The code in this repo aims to follow Python style guidelines as outlined in [PEP 8](https://peps.python.org/pep-0008/).
+```
+fastapi-task-app
+├── app
+│   ├── main.py                # Entry point of the FastAPI application
+│   ├── models
+│   │   └── task.py            # SQLAlchemy model for tasks
+│   ├── controllers
+│   │   └── task_controller.py  # Controller for task operations
+│   ├── schemas
+│   │   └── task_schema.py      # Pydantic schemas for task validation
+│   └── database.py             # Database connection and session management
+├── requirements.txt            # Project dependencies
+└── README.md                   # Project documentation
+```
 
-## Set up instructions
+## Setup Instructions
 
-This sample makes use of Dev Containers, in order to leverage this setup, make sure you have [Docker installed](https://www.docker.com/products/docker-desktop).
+1. **Clone the repository:**
+   ```
+   git clone <repository-url>
+   cd fastapi-task-app
+   ```
 
-To successfully run this example, we recommend the following VS Code extensions:
+2. **Create a virtual environment:**
+   ```
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
 
-- [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-- [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-- [Python Debugger](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy)
-- [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) 
+3. **Install dependencies:**
+   ```
+   pip install -r requirements.txt
+   ```
 
-In addition to these extension there a few settings that are also useful to enable. You can enable to following settings by opening the Settings editor (`Ctrl+,`) and searching for the following settings:
+4. **Run the application:**
+   ```
+   uvicorn app.main:app --reload
+   ```
 
-- Python > Analysis > **Type Checking Mode** : `basic`
-- Python > Analysis > Inlay Hints: **Function Return Types** : `enable`
-- Python > Analysis > Inlay Hints: **Variable Types** : `enable`
+## API Usage
 
-## Running the sample
-- Open the template folder in VS Code (**File** > **Open Folder...**)
-- Open the Command Palette in VS Code (**View > Command Palette...**) and run the **Dev Container: Reopen in Container** command.
-- Run the app using the Run and Debug view or by pressing `F5`
-- `Ctrl + click` on the URL that shows up on the terminal to open the running application 
-- Test the API functionality by navigating to `/docs` URL to view the Swagger UI
-- Configure your Python test in the Test Panel or by triggering the **Python: Configure Tests** command from the Command Palette
-- Run tests in the Test Panel or by clicking the Play Button next to the individual tests in the `test_main.py` file
+### Create a Task
+
+- **Endpoint:** `POST /tasks`
+- **Request Body:**
+  ```json
+  {
+    "title": "Task Title",
+    "description": "Optional task description",
+    "status": "pending",
+    "due_date": "2023-10-31T12:00:00"
+  }
+  ```
+
+### Retrieve a Task by ID
+
+- **Endpoint:** `GET /tasks/{id}`
+
+### Retrieve All Tasks
+
+- **Endpoint:** `GET /tasks`
+
+### Update Task Status
+
+- **Endpoint:** `PUT /tasks/{id}/status`
+- **Request Body:**
+  ```json
+  {
+    "status": "completed"
+  }
+  ```
+
+### Delete a Task
+
+- **Endpoint:** `DELETE /tasks/{id}`
+
+## License
+
+This project is licensed under the MIT License.
