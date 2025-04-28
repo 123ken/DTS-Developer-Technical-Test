@@ -1,11 +1,11 @@
-# FastAPI Task App
+# DTS Developer Technical Test Backend
 
 This is a simple FastAPI application for managing tasks. It allows users to create, retrieve, update, and delete tasks with properties such as title, optional description, status, and due date/time.
 
 ## Project Structure
 
 ```
-fastapi-task-app
+backend
 ├── app
 │   ├── main.py                # Entry point of the FastAPI application
 │   ├── models
@@ -23,8 +23,8 @@ fastapi-task-app
 
 1. **Clone the repository:**
    ```
-   git clone <repository-url>
-   cd fastapi-task-app
+   git clone <https://github.com/123ken/DTS-Developer-Technical-Test.git>
+   cd backend
    ```
 
 2. **Create a virtual environment:**
