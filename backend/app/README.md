@@ -23,7 +23,7 @@ backend
 
 1. **Clone the repository:**
    ```
-   git clone <https://github.com/123ken/DTS-Developer-Technical-Test.git>
+   git clone https://github.com/123ken/DTS-Developer-Technical-Test.git
    cd backend
    ```
 
